@@ -139,4 +139,5 @@ made load dialog more intuitive by adding load successful message
 
 26.9. made a bunch of last minute fixes and exported v0.1 patch 1 to google drive
 2.10. changed focus to tartarus modelling tool as this program is useable now
-3.10. added vcs and uploaded my project to github
+3.10. renamed project from ling ling weixiao flowcharting tool deluxe to tartarus flowcharting tool
+added vcs and uploaded the project to github
