@@ -1,0 +1,187 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqm2glti4k1p2"]
+
+[ext_resource type="Script" path="res://editor/load_save_system/save_load_dialog.gd" id="1_rl1lx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsn7t"]
+content_margin_left = 7.0
+content_margin_top = 4.0
+bg_color = Color(0.52549, 0.52549, 0.52549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g23ar"]
+
+[node name="SaveLoadDialog" type="Panel" node_paths=PackedStringArray("window_header", "save_container", "load_container", "timer", "file_display_container", "b_close_1", "b_close_2", "b_save", "b_load", "save_name_edit", "load_name_edit", "b_folder_location", "message_label")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.0
+offset_top = -206.0
+offset_right = 362.0
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rl1lx")
+window_header = NodePath("VBoxContainer/RichTextLabel")
+save_container = NodePath("VBoxContainer/MarginContainer/SaveHBoxContainer")
+load_container = NodePath("VBoxContainer/MarginContainer/LoadHBoxContainer2")
+timer = NodePath("Timer")
+file_display_container = NodePath("VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer/VBoxContainer")
+b_close_1 = NodePath("VBoxContainer/MarginContainer/SaveHBoxContainer/Button3")
+b_close_2 = NodePath("VBoxContainer/MarginContainer/LoadHBoxContainer2/Button3")
+b_save = NodePath("VBoxContainer/MarginContainer/SaveHBoxContainer/Button")
+b_load = NodePath("VBoxContainer/MarginContainer/LoadHBoxContainer2/Button")
+save_name_edit = NodePath("VBoxContainer/MarginContainer/SaveHBoxContainer/TextEdit")
+load_name_edit = NodePath("VBoxContainer/MarginContainer/LoadHBoxContainer2/TextEdit")
+b_folder_location = NodePath("Button")
+message_label = NodePath("Panel/RichTextLabel")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_lsn7t")
+text = " Save Flowchart..."
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_g23ar")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_top = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="SaveHBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/MarginContainer/SaveHBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "name your flowchart..."
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/SaveHBoxContainer"]
+custom_minimum_size = Vector2(62, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/SaveHBoxContainer/Panel"]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center].csv[/center]"
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/SaveHBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "  Save  "
+
+[node name="Button3" type="Button" parent="VBoxContainer/MarginContainer/SaveHBoxContainer"]
+layout_mode = 2
+text = "  Close  "
+
+[node name="LoadHBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/MarginContainer/LoadHBoxContainer2"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "name your flowchart..."
+
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer/LoadHBoxContainer2"]
+custom_minimum_size = Vector2(62, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/LoadHBoxContainer2/Panel"]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center].csv[/center]"
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/LoadHBoxContainer2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "  Load  "
+
+[node name="Button3" type="Button" parent="VBoxContainer/MarginContainer/LoadHBoxContainer2"]
+layout_mode = 2
+text = "  Close  "
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 132.0
+offset_top = 171.0
+offset_right = 346.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+text = " Open save folder location "
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(62, 0)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 383.0
+offset_right = 483.0
+offset_bottom = 414.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+custom_minimum_size = Vector2(28, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true

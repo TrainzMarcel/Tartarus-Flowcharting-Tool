@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://8ocwiwmi6ns4"]
+
+[ext_resource type="Script" path="res://editor/scripts/handle_draw.gd" id="1_camck"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5xqq"]
+bg_color = Color(0, 0.6, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfdv3"]
+bg_color = Color(0, 0.788235, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g6mca"]
+bg_color = Color(0, 0.6, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+corner_detail = 14
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ware"]
+
+[node name="ScalingHandles" type="Control" node_paths=PackedStringArray("handle_array")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_camck")
+handle_array = [NodePath("Button"), NodePath("Button2"), NodePath("Button3"), NodePath("Button4")]
+handle_offset = 60
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_w5xqq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kfdv3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mca")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4ware")
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_w5xqq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kfdv3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mca")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4ware")
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_w5xqq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kfdv3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w5xqq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4ware")
+
+[node name="Button4" type="Button" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_w5xqq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kfdv3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g6mca")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4ware")

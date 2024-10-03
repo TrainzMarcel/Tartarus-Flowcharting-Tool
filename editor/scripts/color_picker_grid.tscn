@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=3 uid="uid://888w0q8m01ym"]
+
+[ext_resource type="Script" path="res://editor/scripts/color_picker_grid.gd" id="1_4b8j1"]
+
+[sub_resource type="Theme" id="Theme_al6p4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnd2y"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.129412, 0.129412, 0.129412, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jm2lf"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_esgqr"]
+
+[node name="ColorPicker" type="Panel"]
+custom_minimum_size = Vector2(64, 64)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_al6p4")
+script = ExtResource("1_4b8j1")
+color_array = Array[Color]([Color(0.835294, 0.243137, 0.309804, 1), Color(0.956863, 0.427451, 0.262745, 1), Color(0.992157, 0.682353, 0.380392, 1), Color(0.996078, 0.878431, 0.407843, 1), Color(1, 1, 1, 1), Color(0.901961, 0.960784, 0.596078, 1), Color(0.670588, 0.866667, 0.643137, 1), Color(0.4, 0.760784, 0.647059, 1), Color(0.196078, 0.533333, 0.741176, 1)])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm2lf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_esgqr")
+toggle_mode = true
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm2lf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_esgqr")
+toggle_mode = true
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm2lf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_esgqr")
+toggle_mode = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm2lf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_esgqr")
+toggle_mode = true
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm2lf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_esgqr")
+toggle_mode = true
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm2lf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_esgqr")
+toggle_mode = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm2lf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_esgqr")
+toggle_mode = true
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm2lf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_esgqr")
+toggle_mode = true
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wnd2y")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jm2lf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_esgqr")
+toggle_mode = true

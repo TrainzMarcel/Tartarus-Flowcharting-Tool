@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi42wgep66h63"]
+
+[ext_resource type="Script" path="res://editor/load_save_system/file_display.gd" id="1_s0ahm"]
+
+[node name="FileDisplay" type="MarginContainer" node_paths=PackedStringArray("button")]
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_s0ahm")
+button = NodePath("Button")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+toggle_mode = true
+text = "save_file_1.csv"

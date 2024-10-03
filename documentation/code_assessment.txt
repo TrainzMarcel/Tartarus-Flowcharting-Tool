@@ -1,0 +1,142 @@
+checking and searching for all the issues
+	
+1. main.gd
+	largest problem by far:
+	getting a reference to the block that is hovered over
+	^ fixed this by looping over block array and checking if mouse is in rect2
+	
+	
+	this is also fixed
+	second largest flaw:
+		deleting process does not work well,
+		leaves nulls in arrays which causes the program to crash
+		
+		^ fix for this was: dont store associated connectors in blocks,
+		store associated blocks in connectors, so that no references
+		are left to clean up
+	
+	lastly:
+		~~disconnector button needs to be implemented~~
+		make a hitbox for this instead and use delete tool
+		that comes later though
+		
+		saving features need to be implemented
+		
+	
+	
+
+
+2. fc_block.gd
+	making blocks generic has its own issues
+	i think imma have to make a new scene for each mode/component
+	
+	making blocks generic so i can add components rather than
+	having a block for different purposes
+	(switch case which does stuff on ready or pre-configured scenes for this)
+
+3. fc_connector.gd
+	line placing and arrow placing algorithm should be reworked to not
+	misplace the line underneath the blocks or misplace the arrow end
+	off the line
+	add hitbox made out of control nodes
+	
+	
+!!PLAN OUT HOW TO IMPLEMENT SELECTION AND THEN NEXT GOALS
+first selection handling
+then selection box handling
+
+then drag handling for all selections
+
+all finished now
+
+
+x delete tool
+x text box for blocks
+x connecting tool (select all desired blocks,
+	click connect button to connect them in order of selection)
+x paint tool
+  ~~arrow flip tool~~ cancelled, arrows reworked to not need that
+x camera movement
+x saving
+x loading
+x merging
+x better color palette
+x fix grid disappearing
+
+v0.1 patch 1 goals
+
+x rework saving and loading functions for cleanliness and stability 4.9.
+x compile smaller linux export template
+x circular scaling handles if one block is selected 11.9.
+	~~(design a better scaling tool)~~
+x fix arrow positioning bug caused by unequally sized blocks 25.9.
+x set textbox to mouse_ignore to prevent being clicked when is_drag_tool_selected is true 4.9
+x release focus from said textbox if canvas is clicked get_viewport().gui_get_focus_owner() 4.9.
+x fix right click delete and paint bug 4.9.
+x added keyboard shortcuts to main buttons 25.9.
+x disabled camera control when save dialog is open 25.9.
+  code checkup and documentation refresh before moving onto v0.2
+
+v0.2 goals
+  get rid of base_update and shape_update, it keeps messing me up
+	just use a setter this time its fine
+  use an enum instead of querying the buttons are selected
+  ux: when deselecting any drag tool, remove all selection and hover rects
+  ux: its admittedly annoying to lose a selection while holding shift so remove that
+  ux: deselect all tools when opening save or planned help dialog
+  use version control system and remote repo
+  fix flashing screen when resizing window (unfixable? my machine only?)
+  compile smaller windows export template (impossible? docker container needed?)
+  use "del" button for deleting selected blocks
+  use f1 button and a question mark button for a user guide
+  click and drag for rectangle select (like when clicking and dragging on an empty desktop)
+  	https://kidscancode.org/godot_recipes/3.x/input/multi_unit_select/index.html
+  use separate thread for saving and loading functions
+  better decouple save dialog from main
+  file_display use .file_name property
+  fix arrow point positioning
+  add "centered arrow" and "is connectable" property to block
+  finish base shape logic (simplify usage with setter?)
+  add type and shape picker
+  dedicated comment blocks that cant be connected to
+  region block
+	regions that render behind flowchart and in front of grid, allowing u to mark
+	sections of the flowchart, with a textbox inside and changeable color
+
+  size up ui
+  proper ui icons, better theming
+  
+  when merging flowcharts, they get tangled
+	so add position picker same as color picker that allows the user to pick a corner or edge
+	to place their flowchart at (using flowchart size which is determined by how far out
+	the farthest out blocks are) plus like 80 pixels (4 units) margin
+
+
+  infinite grid that changes density with scroll level
+	lets lighter lines disappear when scrolled far enough
+	checkers?
+	use a shader instead of regular code?
+
+  hyperlinks between save files(maybe)
+  flowchart minimap (maybe)
+
+
+21.8. finished arrow positioning calculations
+22.8. added color tool, added camera movement, fixed grid rendering issue
+23.8. started work on saving and dialog
+26.8. fixed ui collision detection breaking at different zoom levels
+27.8. added drag and paint icons, finished save-load system and dialog
+29.8. fixed grid disappearing, compiled smaller linux export template
+30.8.-4.9. trying to compile smaller windows export template, to no avail
+11.9. added scaling handles when one block is selected
+12.9. fixed arrow positioning bug when blocks are of unequal size
+
+
+25.9. fixed another arrow positioning bug when blocks are of unequal size
+also disabled camera control when save dialog is enabled
+and added keyboard shortcuts to main buttons
+made load dialog more intuitive by adding load successful message
+
+26.9. made a bunch of last minute fixes and exported v0.1 patch 1 to google drive
+2.10. changed focus to tartarus modelling tool as this program is useable now
+3.10. added vcs and uploaded my project to github

@@ -1,0 +1,384 @@
+[gd_scene load_steps=28 format=3 uid="uid://54ld121dig7q"]
+
+[ext_resource type="Script" path="res://editor/main.gd" id="1_xmeii"]
+[ext_resource type="Script" path="res://editor/scripts/grid_draw.gd" id="2_bnjoj"]
+[ext_resource type="Texture2D" uid="uid://b0kady63j1u1a" path="res://editor/icons/connector.png" id="3_5ad4y"]
+[ext_resource type="PackedScene" uid="uid://8ocwiwmi6ns4" path="res://editor/scripts/scaling_handles.tscn" id="4_jyj45"]
+[ext_resource type="Texture2D" uid="uid://c0ecpadcxhi4o" path="res://editor/icons/delete.png" id="4_tial4"]
+[ext_resource type="Texture2D" uid="uid://d2osn8gav04lb" path="res://editor/icons/spawn.png" id="5_7o7jg"]
+[ext_resource type="Texture2D" uid="uid://dgvvxgulgn4c7" path="res://editor/icons/drag.png" id="6_12wno"]
+[ext_resource type="Texture2D" uid="uid://ccc3y0ynb63nr" path="res://editor/icons/merge.png" id="6_livok"]
+[ext_resource type="PackedScene" uid="uid://888w0q8m01ym" path="res://editor/scripts/color_picker_grid.tscn" id="7_3lv3u"]
+[ext_resource type="Texture2D" uid="uid://c8en2n42hupe4" path="res://editor/icons/load.png" id="7_pbfwv"]
+[ext_resource type="Texture2D" uid="uid://dg73occjrejft" path="res://editor/icons/paint.png" id="8_1d28q"]
+[ext_resource type="Texture2D" uid="uid://hdbham0stxge" path="res://editor/icons/save.png" id="8_8lxp5"]
+[ext_resource type="Script" path="res://editor/scripts/selection_rect.gd" id="10_fhhud"]
+[ext_resource type="Script" path="res://editor/scripts/camera_control.gd" id="12_vjs3u"]
+[ext_resource type="PackedScene" uid="uid://bqm2glti4k1p2" path="res://editor/load_save_system/save_load_dialog.tscn" id="13_kg1nw"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_tyc5t"]
+allow_unpress = true
+
+[sub_resource type="InputEventAction" id="InputEventAction_qhk7n"]
+action = &"Select"
+
+[sub_resource type="Shortcut" id="Shortcut_xbvx4"]
+events = [SubResource("InputEventAction_qhk7n")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_dd1qa"]
+action = &"Connect"
+
+[sub_resource type="Shortcut" id="Shortcut_lcvcs"]
+events = [SubResource("InputEventAction_dd1qa")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_lsgtv"]
+action = &"Paint"
+
+[sub_resource type="Shortcut" id="Shortcut_ubi1j"]
+events = [SubResource("InputEventAction_lsgtv")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_b2aaa"]
+action = &"Delete"
+
+[sub_resource type="Shortcut" id="Shortcut_qiy3s"]
+events = [SubResource("InputEventAction_b2aaa")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_1lams"]
+action = &"Spawn"
+
+[sub_resource type="Shortcut" id="Shortcut_cfuuf"]
+events = [SubResource("InputEventAction_1lams")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfowq"]
+bg_color = Color(0.486275, 0.486275, 0.486275, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="Main" type="Control" node_paths=PackedStringArray("b_drag_block", "b_connect_block", "b_paint_block", "b_paint_grid", "b_delete_block", "b_spawn_block", "b_hide_grid", "b_merge_flowchart", "b_load_flowchart", "b_save_flowchart", "save_dialog", "grid_draw", "flowchart_container", "selection_container", "no_drag_ui_array", "camera_control", "hover_selection_box", "scaling_handles")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xmeii")
+b_drag_block = NodePath("Camera2D/UI/HBoxContainer/Button6")
+b_connect_block = NodePath("Camera2D/UI/HBoxContainer/Button3")
+b_paint_block = NodePath("Camera2D/UI/HBoxContainer/Button9")
+b_paint_grid = NodePath("Camera2D/UI/HBoxContainer/ColorPicker")
+b_delete_block = NodePath("Camera2D/UI/HBoxContainer/Button2")
+b_spawn_block = NodePath("Camera2D/UI/HBoxContainer/Button")
+b_hide_grid = NodePath("Camera2D/UI/HBoxContainer/CheckBox")
+b_merge_flowchart = NodePath("Camera2D/UI/HBoxContainer2/Button6")
+b_load_flowchart = NodePath("Camera2D/UI/HBoxContainer2/Button5")
+b_save_flowchart = NodePath("Camera2D/UI/HBoxContainer2/Button4")
+save_dialog = NodePath("Camera2D/UI/SaveLoadDialog")
+grid_draw = NodePath("FlowchartUI/GridDraw")
+flowchart_container = NodePath("FlowchartUI/FlowchartContainer")
+selection_container = NodePath("FlowchartUI/SelectionContainer")
+no_drag_ui_array = [NodePath("Camera2D/UI/HBoxContainer/Button6"), NodePath("Camera2D/UI/HBoxContainer/Button3"), NodePath("Camera2D/UI/HBoxContainer/Button9"), NodePath("Camera2D/UI/HBoxContainer/ColorPicker"), NodePath("Camera2D/UI/HBoxContainer/Button2"), NodePath("Camera2D/UI/HBoxContainer/Button"), NodePath("Camera2D/UI/HBoxContainer/CheckBox"), NodePath("Camera2D/UI/HBoxContainer2/Button6"), NodePath("Camera2D/UI/HBoxContainer2/Button5"), NodePath("Camera2D/UI/HBoxContainer2/Button4")]
+camera_control = NodePath("Camera2D")
+hover_selection_box = NodePath("FlowchartUI/SelectionRect")
+scaling_handles = NodePath("FlowchartUI/ScalingHandles")
+
+[node name="FlowchartUI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="GridDraw" type="Control" parent="FlowchartUI"]
+layout_mode = 1
+anchors_preset = 0
+script = ExtResource("2_bnjoj")
+grid_size = Vector2(1920, 1080)
+grid_spacing = Vector2(20, 20)
+grid_thickness = 1
+grid_color = Color(0.678431, 0.678431, 0.678431, 1)
+
+[node name="RegionContainer" type="Control" parent="FlowchartUI"]
+editor_description = "planned for colored blocks that render below the rest of the flowchart"
+layout_mode = 1
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="FlowchartContainer" type="Control" parent="FlowchartUI"]
+layout_mode = 1
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="SelectionRect" type="Line2D" parent="FlowchartUI"]
+position = Vector2(0, 67)
+script = ExtResource("10_fhhud")
+box_color = Color(0, 0.788235, 1, 1)
+
+[node name="SelectionContainer" type="Control" parent="FlowchartUI"]
+layout_mode = 1
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="ScalingHandles" parent="FlowchartUI" instance=ExtResource("4_jyj45")]
+visible = false
+handle_offset = 0
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("zoom_display")]
+position = Vector2(576, 324)
+script = ExtResource("12_vjs3u")
+zoom_display = NodePath("UI/RichTextLabel")
+
+[node name="Background" type="CanvasLayer" parent="Camera2D"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI" type="CanvasLayer" parent="Camera2D"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/UI"]
+offset_right = 608.0
+offset_bottom = 64.0
+mouse_filter = 2
+
+[node name="Button6" type="Button" parent="Camera2D/UI/HBoxContainer"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "shift select and drag blocks"
+theme_override_colors/icon_pressed_color = Color(0.53, 0.53, 0.53, 1)
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tyc5t")
+shortcut = SubResource("Shortcut_xbvx4")
+icon = ExtResource("6_12wno")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="Camera2D/UI/HBoxContainer/Button6"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 82.0
+offset_right = 78.0
+offset_bottom = 108.0
+
+[node name="Label" type="Label" parent="Camera2D/UI/HBoxContainer/Button6/Panel"]
+layout_mode = 1
+offset_top = -5.0
+offset_right = 80.0
+offset_bottom = 67.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 1
+
+[node name="Button3" type="Button" parent="Camera2D/UI/HBoxContainer"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "connect selected blocks"
+theme_override_colors/icon_pressed_color = Color(0.53, 0.53, 0.53, 1)
+action_mode = 0
+shortcut = SubResource("Shortcut_lcvcs")
+icon = ExtResource("3_5ad4y")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="Camera2D/UI/HBoxContainer/Button3"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 82.0
+offset_right = 78.0
+offset_bottom = 108.0
+
+[node name="Label" type="Label" parent="Camera2D/UI/HBoxContainer/Button3/Panel"]
+layout_mode = 1
+offset_top = -5.0
+offset_right = 80.0
+offset_bottom = 67.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 50
+text = "2"
+horizontal_alignment = 1
+
+[node name="Button9" type="Button" parent="Camera2D/UI/HBoxContainer"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "paint blocks"
+theme_override_colors/icon_pressed_color = Color(0.53, 0.53, 0.53, 1)
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tyc5t")
+shortcut = SubResource("Shortcut_ubi1j")
+icon = ExtResource("8_1d28q")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="Camera2D/UI/HBoxContainer/Button9"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 82.0
+offset_right = 78.0
+offset_bottom = 108.0
+
+[node name="Label" type="Label" parent="Camera2D/UI/HBoxContainer/Button9/Panel"]
+layout_mode = 1
+offset_top = -5.0
+offset_right = 80.0
+offset_bottom = 67.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 50
+text = "3"
+horizontal_alignment = 1
+
+[node name="ColorPicker" parent="Camera2D/UI/HBoxContainer" instance=ExtResource("7_3lv3u")]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 2
+color_array = Array[Color]([Color(0.964706, 0.054902, 0.054902, 1), Color(0.996078, 0.654902, 0, 1), Color(0.290196, 0.67451, 0.780392, 1), Color(0.964706, 0.466667, 0.054902, 1), Color(0.517647, 0.521569, 1, 1), Color(0.00784314, 0.760784, 0.419608, 1), Color(0.00784314, 0.435294, 0.756863, 1), Color(0.203922, 0.541176, 0.388235, 1), Color(1, 1, 1, 1)])
+
+[node name="Button2" type="Button" parent="Camera2D/UI/HBoxContainer"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "delete blocks"
+theme_override_colors/icon_pressed_color = Color(0.529412, 0.529412, 0.529412, 1)
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tyc5t")
+shortcut = SubResource("Shortcut_qiy3s")
+icon = ExtResource("4_tial4")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="Camera2D/UI/HBoxContainer/Button2"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 82.0
+offset_right = 78.0
+offset_bottom = 108.0
+
+[node name="Label" type="Label" parent="Camera2D/UI/HBoxContainer/Button2/Panel"]
+layout_mode = 1
+offset_top = -5.0
+offset_right = 80.0
+offset_bottom = 67.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 50
+text = "4"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Camera2D/UI/HBoxContainer"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "create a blank block"
+theme_override_colors/icon_pressed_color = Color(0.53, 0.53, 0.53, 1)
+shortcut = SubResource("Shortcut_cfuuf")
+icon = ExtResource("5_7o7jg")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Panel" type="Panel" parent="Camera2D/UI/HBoxContainer/Button"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 82.0
+offset_right = 78.0
+offset_bottom = 108.0
+
+[node name="Label" type="Label" parent="Camera2D/UI/HBoxContainer/Button/Panel"]
+layout_mode = 1
+offset_top = -5.0
+offset_right = 80.0
+offset_bottom = 67.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 50
+text = "5"
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Camera2D/UI/HBoxContainer"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfowq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dfowq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dfowq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_dfowq")
+text = "Hide grid"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Camera2D/UI"]
+layout_direction = 3
+offset_right = 576.0
+offset_bottom = 64.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Button6" type="Button" parent="Camera2D/UI/HBoxContainer2"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "merge flowcharts"
+theme_override_colors/icon_pressed_color = Color(0.53, 0.53, 0.53, 1)
+icon = ExtResource("6_livok")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button5" type="Button" parent="Camera2D/UI/HBoxContainer2"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "load flowchart"
+theme_override_colors/icon_pressed_color = Color(0.53, 0.53, 0.53, 1)
+icon = ExtResource("7_pbfwv")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button4" type="Button" parent="Camera2D/UI/HBoxContainer2"]
+custom_minimum_size = Vector2(78, 78)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "save flowchart"
+theme_override_colors/icon_pressed_color = Color(0.53, 0.53, 0.53, 1)
+icon = ExtResource("8_8lxp5")
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -46.0
+offset_right = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center]1.0x[/center]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Camera2D/UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -46.0
+offset_right = 215.0
+grow_vertical = 0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "v0.1 patch 1"
+
+[node name="SaveLoadDialog" parent="Camera2D/UI" node_paths=PackedStringArray("main") instance=ExtResource("13_kg1nw")]
+visible = false
+main = NodePath("../../..")

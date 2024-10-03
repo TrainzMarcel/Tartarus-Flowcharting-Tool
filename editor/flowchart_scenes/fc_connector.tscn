@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjhnfgehlplov"]
+
+[ext_resource type="Script" path="res://editor/flowchart_scenes/fc_connector.gd" id="1_4in06"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4in06")
